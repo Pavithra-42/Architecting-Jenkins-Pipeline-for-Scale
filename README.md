@@ -64,19 +64,18 @@ Use ```https://start.spring.io/``` to get source & test code for java.
 
 **2. Configure Jenkins Master**
 
-**2.1 Add Slave to Master server**
-
-- Create .pem file in master server.
-- Copy the downloaded .pem to master & save it.
-- Now execute this command to conect slave ```ssh -i file_name.pem ubuntu@public_ip_of_slave```.
-- Once the command executed, master able to conect to slave.
-  
-**2.2 Add Slave Nodes:**
+**2.1 Add Slave Nodes:**
 - Go to Jenkins Dashboard -> Manage Jenkins -> Manage Nodes and Clouds -> New Node.
-- Create nodes for each slave and configure them with the appropriate labels (e.g., compile-node, test-node).
+- Create nodes for each slave and configure them with the appropriate labels (Eg: remote root directory=/home/ubuntu, ).
 
 **2.2 Set Up SSH Connections:**
-- Ensure Jenkins master can SSH into the slave nodes without password prompt. Copy the master’s public SSH key to the slave nodes ```~/.ssh/authorized_keys``` file.
+- Ensure Jenkins master can SSH into the slave nodes without password prompt. Execute below commands in slave.
+  ```
+  ssh-keygen
+  cd ~/.ssh
+  ls
+  ```
+- Copy the public(id_rsa.pub) SSH key to the ```authorized_keys``` file and private key to credentials in jenkins with username as ubuntu.
 
 **3. Configure Jenkins Slave Nodes**
 
