@@ -23,24 +23,45 @@ Use ```https://start.spring.io/``` to get source & test code for java.
 
 **1. Set Up AWS EC2 Instances**
 
-1.1 Launch three EC2 instances:
+**1.1 Launch three EC2 instances:**
 - One for the Jenkins master.
 - Two for the Jenkins slaves.
 
-1.2 Install Jenkins on the Master Node:
+**1.2 Install Jenkins on the Master Node:**
 - SSH into the master instance and install Jenkins using ```https://github.com/Pavithra-42/Jenkins-Course.git```.
 - Configure Jenkins and ensure it's accessible via its web interface.
   
-1.3 Install Java and Maven on All Instances:
+**1.3 Install Java and Maven on All Instances:**
 - SSH into each instance and install Java and Maven.
+  
+**1.3.1 Install Java:**
+
+- Update the package index ```sudo apt update```
+- Install the OpenJDK package ```sudo apt install openjdk-11-jdk -y```
+- Verify the installation ```java -version```
+
+ **1.3.2 Install Maven:**
+
+- Download Maven ```wget https://www-us.apache.org/dist/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz```
+- Extract the downloaded archive ```tar xzf apache-maven-3.8.6-bin.tar.gz```
+- Move Maven to /opt ```sudo mv apache-maven-3.8.6 /opt/maven```
+- Set up environment variables by adding the following to /etc/profile.d/maven.sh ```sudo nano /etc/profile.d/maven.sh```
+- Add the following lines:
+  ```
+  export M2_HOME=/opt/maven
+  export PATH=${M2_HOME}/bin:${PATH}
+  ```
+ - Make the script executable ```sudo chmod +x /etc/profile.d/maven.sh```
+ - Load the environment variables ```source /etc/profile.d/maven.sh```
+ - Verify the installation ```mvn -version``
 
 **2. Configure Jenkins Master**
 
-2.1 Add Slave Nodes:
+**2.1 Add Slave Nodes:**
 - Go to Jenkins Dashboard -> Manage Jenkins -> Manage Nodes and Clouds -> New Node.
 - Create nodes for each slave and configure them with the appropriate labels (e.g., compile-node, test-node).
 
-2.2 Set Up SSH Connections:
+**2.2 Set Up SSH Connections:**
 - Ensure Jenkins master can SSH into the slave nodes without password prompt. Copy the master’s public SSH key to the slave nodes ```~/.ssh/authorized_keys``` file.
 
 **3. Configure Jenkins Slave Nodes**
@@ -52,13 +73,14 @@ Start the agent by running:
 
 **4. Create the Jenkins Pipeline**
 
-4.1 Create a Pipeline Job:
+**4.1 Create a Pipeline Job:**
 - Go to Jenkins Dashboard -> New Item -> Pipeline and give it a name.
 
-4.2 Define the Pipeline Script:
+**4.2 Define the Pipeline Script:**
 - Use the Pipeline syntax to define the tasks to be executed on the different nodes. Below is a sample Groovy script for the pipeline:
 ```
 groovy
+
 pipeline {
     agent none
     stages {
