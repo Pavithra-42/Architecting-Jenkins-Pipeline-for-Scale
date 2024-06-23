@@ -66,7 +66,7 @@ Use ```https://start.spring.io/``` to get source & test code for java.
 
 **2.1 Add Slave Nodes:**
 - Go to Jenkins Dashboard -> Manage Jenkins -> Manage Nodes and Clouds -> New Node.
-- Create nodes for each slave and configure them with the appropriate labels (Eg: remote root directory=/home/ubuntu, ).
+- Create nodes for each slave and configure them with the appropriate labels (Eg: remote root directory=/home/ubuntu).
 
 **2.2 Set Up SSH Connections:**
 - Ensure Jenkins master can SSH into the slave nodes without password prompt. Execute below commands in slave.
