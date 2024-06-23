@@ -27,7 +27,7 @@ Use ```https://start.spring.io/``` to get source & test code for java.
 - Two for the Jenkins slaves.
 
 1.2 Install Jenkins on the Master Node:
-- SSH into the master instance and install Jenkins.
+- SSH into the master instance and install Jenkins using ```https://github.com/Pavithra-42/Jenkins-Course.git```.
 - Configure Jenkins and ensure it's accessible via its web interface.
   
 1.3 Install Java and Maven on All Instances:
