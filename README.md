@@ -26,7 +26,6 @@ Use ```https://start.spring.io/``` to get source & test code for java.
 **1.1 Launch three EC2 instances:**
 - One for the Jenkins master.
 - Two for the Jenkins slaves.
-**NOTE:** While creating instances, download key pair in .pem format to use the .pem content in jenkins node.
 
 **1.2 Install Jenkins on the Master Node:**
 - SSH into the master instance and install Jenkins using ```https://github.com/Pavithra-42/Jenkins-Course.git```.
