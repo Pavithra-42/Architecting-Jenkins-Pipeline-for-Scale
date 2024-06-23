@@ -32,6 +32,8 @@ Use ```https://start.spring.io/``` to get source & test code for java.
 - Configure Jenkins and ensure it's accessible via its web interface.
   
 **1.3 Install Java and Maven on All Instances:**
+
+**REASON:** While Jenkins provides a Maven plugin to manage and run Maven builds, the actual Maven tool itself, as well as the Java runtime required to run Maven, needs to be installed on any nodes (master or slave) where the builds will be executed.
 - SSH into each instance and install Java and Maven.
   
 **1.3.1 Install Java:**
