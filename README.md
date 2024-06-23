@@ -53,7 +53,7 @@ Use ```https://start.spring.io/``` to get source & test code for java.
   ```
  - Make the script executable ```sudo chmod +x /etc/profile.d/maven.sh```
  - Load the environment variables ```source /etc/profile.d/maven.sh```
- - Verify the installation ```mvn -version``
+ - Verify the installation ```mvn -version```
 
 **2. Configure Jenkins Master**
 
