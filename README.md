@@ -94,37 +94,45 @@ Start the agent by running:
 groovy
 
 pipeline {
-    agent none
+    agent { 
+        // Specify the label of the slave node configured in Jenkins
+        label 'slave1'
+    }
+    environment {
+        // Replace '/usr/lib/jvm/java-11-openjdk-amd64' with your JDK path
+        JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
+        PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
+    }
     stages {
         stage('Checkout') {
-            agent { label 'master' }
             steps {
-                // Checkout the code from Git
-                git 'https://github.com/your-repo/your-project.git'
+                // Checkout your Git repository
+               git branch: 'main', url: 'https://github.com/Pavithra-42/Architecting-Jenkins-Pipeline-for-Scale.git'
             }
         }
-        stage('Compile') {
-            agent { label 'compile-node' }
+        stage('Build') {
             steps {
-                // Compile the Maven project
-                sh 'mvn clean compile'
+                // Build your Java project using Maven
+                sh 'mvn clean install'
             }
         }
         stage('Test') {
-            agent { label 'test-node' }
             steps {
-                // Run the tests
+                // Run tests if applicable
                 sh 'mvn test'
             }
         }
     }
     post {
-        always {
-            // Clean up or perform any necessary steps after completion
-            echo 'Pipeline finished.'
+        success {
+            echo 'Build successful!'
+        }
+        failure {
+            echo 'Build failed!'
         }
     }
 }
+   
 ```
 **5. Trigger the Pipeline**
 
