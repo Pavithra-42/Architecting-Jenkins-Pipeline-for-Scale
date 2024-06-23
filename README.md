@@ -22,6 +22,7 @@ You’re a DevOps engineer at Softmax Solutions, a software company that develop
 Use ```https://start.spring.io/``` to get source & test code for java.
 
 **1. Set Up AWS EC2 Instances**
+
 1.1 Launch three EC2 instances:
 - One for the Jenkins master.
 - Two for the Jenkins slaves.
@@ -92,6 +93,7 @@ pipeline {
 }
 ```
 **5. Trigger the Pipeline**
+
 - Go to the pipeline job on the Jenkins dashboard and click "Build Now" to trigger the pipeline.
 
 **Notes**
