@@ -19,7 +19,7 @@ You’re a DevOps engineer at Softmax Solutions, a software company that develop
 
 **To set up a distributed Jenkins pipeline that will compile and test a Maven project on two different slave nodes respectively, follow these steps:**
 
-Use ```https://start.spring.io/``` to get source & test code for java.
+Use Spring initializr ```https://start.spring.io/``` to get source & test code for java.
 
 **1. Set Up AWS EC2 Instances**
 
